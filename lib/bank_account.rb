@@ -6,10 +6,10 @@ class BankAccount
      
     attr_reader :name
    
-    def initialize(name)
+    def initialize(name, balance = 1000, status = "open")
         @name = name
-        @balance = 1000
-        @status = "open"
+        @balance = balance
+        @status = status
     end
 
     def deposit(add_money)
@@ -20,7 +20,7 @@ class BankAccount
         "Your balance is $#{@balance}."
     end
 
-    def valid? 
+    def valid?
         @status == "open" && @balance > 0
     end
 
