@@ -1,31 +1,33 @@
-# cannot change the name, just read 
-require 'pry'
 class BankAccount
-
-    attr_accessor :balance, :status
-     
     attr_reader :name
-   
-    def initialize(name, balance = 1000, status = "open")
-        @name = name
-        @balance = balance
-        @status = status
+    attr_accessor :balance, :status
+  
+    def initialize(name)
+      @name = name
+      @balance = 1000
+      @status = "open"
     end
-
-    def deposit(add_money)
-        @balance = @balance + add_money
+  
+    def deposit(cash_amount)
+      @balance += cash_amount
     end
-
+  
+    def withdraw(cash_amount)
+      @balance -= cash_amount
+    end
+  
     def display_balance
-        "Your balance is $#{@balance}."
+      "Your balance is $#{@balance}."
     end
-
+  
     def valid?
-        @status == "open" && @balance > 0
+      if @status == "open" && @balance > 0
+        return true
+      end
+      false
     end
-
+  
     def close_account
-        @status = "closed"
+      @status = "closed"
     end
-#binding.pry
-end 
+  end
